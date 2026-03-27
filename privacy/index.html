@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacybeleid — VueSpeed</title>
+    <meta name="description" content="Privacybeleid van VueSpeed. Geen accounts, geen advertenties, geen tracking.">
+    <link rel="canonical" href="https://vuespeed.app/privacy">
+    <style>
+        :root {
+            --bg: #08080f;
+            --surface: #12121a;
+            --border: #1e1e2a;
+            --blue: #3399FF;
+            --text: #e8e8ed;
+            --text-muted: #8888a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 40px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        header a {
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        header a:hover { text-decoration: underline; }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .updated {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 36px 0 12px;
+        }
+
+        p, li {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        strong { color: var(--text); }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        a { color: var(--blue); }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 32px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--blue);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        /* Language switcher */
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .lang-switch button {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        .lang-switch button.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/">&larr; VueSpeed</a>
+            <h1>Privacybeleid</h1>
+            <p class="updated">Laatst bijgewerkt: 27 maart 2026</p>
+            <div class="lang-switch">
+                <button class="active" onclick="switchLang('nl')">Nederlands</button>
+                <button onclick="switchLang('en')">English</button>
+            </div>
+        </header>
+
+        <!-- DUTCH -->
+        <div id="lang-nl" class="lang-content active">
+            <p>VueSpeed is een onafhankelijke iOS-app gemaakt door één ontwikkelaar. Dit privacybeleid legt eerlijk en duidelijk uit welke gegevens de app gebruikt en waarom — zonder juridisch jargon.</p>
+
+            <h2>1. Welke gegevens gebruikt VueSpeed</h2>
+
+            <p><strong>Locatie (GPS)</strong><br>
+            De app gebruikt CoreLocation om je snelheid, rijrichting en afstand te bepalen. Locatiegegevens worden ook gebruikt om snelheidslimieten op te zoeken voor jouw locatie.</p>
+
+            <p><strong>Bewegingssensoren</strong><br>
+            Via CoreMotion detecteert de app of je aan het rijden bent (automotive activiteitsdetectie) en meet deze g-krachten tijdens het rijden.</p>
+
+            <p><strong>Schermhelderheid</strong><br>
+            De app leest de schermhelderheid om automatisch over te schakelen naar nachtmodus.</p>
+
+            <p><strong>Audio en Bluetooth</strong><br>
+            Via AVAudioSession detecteert de app of je verbonden bent met een autokit of andere audioapparatuur, zodat de weergave hierop kan worden aangepast.</p>
+
+            <p><strong>Ritgeschiedenis</strong><br>
+            Ritten worden lokaal opgeslagen op je apparaat. Per rit worden de volgende gegevens bewaard: start- en eindtijd, duur, afstand, snelheidsstatistieken en de gereden route.</p>
+
+            <p><strong>Instellingen</strong><br>
+            Je voorkeuren worden lokaal opgeslagen. Deze verlaten je apparaat nooit.</p>
+
+            <p><strong>Live Activities</strong><br>
+            De app gebruikt ActivityKit voor weergave in het Dynamic Island. Dit werkt volledig lokaal op je apparaat.</p>
+
+            <h2>2. Hoe worden je gegevens gebruikt</h2>
+
+            <p>Alle gegevens worden uitsluitend gebruikt om de app te laten functioneren:</p>
+            <ul>
+                <li>Locatie en beweging → snelheidsmeting, routetracking, activiteitsdetectie</li>
+                <li>GPS-coördinaten → snelheidslimiet opzoeken via OpenStreetMap, en als fallback via Apple Geocoding</li>
+                <li>Schermhelderheid → automatische nachtmodus</li>
+                <li>Bluetooth/audio → detectie autokit-verbinding</li>
+                <li>Ritgeschiedenis → weergeven van je ritten in de app</li>
+                <li>Instellingen → je voorkeuren onthouden</li>
+            </ul>
+
+            <p>Er is geen analyse, geen advertenties, geen tracking en geen koppeling aan een account. De app verzamelt geen gegevens voor eigen gebruik van de ontwikkelaar.</p>
+
+            <h2>3. Gegevens die met derden worden gedeeld</h2>
+
+            <p>VueSpeed deelt in principe geen gegevens met derden. Er zijn twee uitzonderingen waarbij je GPS-coördinaten kort worden verstuurd:</p>
+
+            <p><strong>OpenStreetMap Overpass API</strong><br>
+            Om de geldende snelheidslimiet op jouw locatie op te zoeken, stuurt de app je huidige coördinaten naar de Overpass API van OpenStreetMap. Deze aanvraag bevat geen identificerende informatie. Zie het <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy">privacybeleid van OpenStreetMap</a>.</p>
+
+            <p><strong>Apple CLGeocoder (fallback)</strong><br>
+            Wanneer de Overpass API niet beschikbaar is, kan de app een verzoek sturen naar Apple's geocodeerservice om de locatienaam te bepalen. Dit valt onder het <a href="https://www.apple.com/legal/privacy/">privacybeleid van Apple</a>.</p>
+
+            <p>Er zijn geen andere derde partijen, geen analyticsdiensten, geen advertentienetwerken en geen andere externe SDK's in de app verwerkt. De app heeft geen advertentietracking (ATT) nodig en volgt je niet over andere apps of websites.</p>
+
+            <h2>4. Gegevensopslag</h2>
+
+            <p>Al je ritgegevens en instellingen worden uitsluitend lokaal op je apparaat opgeslagen. Er is geen server van de ontwikkelaar, geen cloud-opslag en geen back-up naar een externe dienst.</p>
+
+            <p>Je kunt alle opgeslagen ritgegevens op elk moment verwijderen vanuit de app zelf. Als je de app verwijdert, worden alle lokale gegevens permanent gewist.</p>
+
+            <h2>5. Je rechten</h2>
+
+            <p>Omdat VueSpeed geen gegevens naar eigen servers stuurt, zijn er geen gegevens om op te vragen of te laten verwijderen bij de ontwikkelaar. Alle gegevens staan op jouw apparaat en staan onder jouw controle.</p>
+
+            <p>Je kunt via de iOS-instellingen altijd de locatiemachtiging voor VueSpeed intrekken of beperken. Zonder locatietoegang kan de app niet functioneren als snelheidsmeter.</p>
+
+            <h2>6. Contact</h2>
+
+            <p>Heb je vragen over dit privacybeleid of over hoe de app werkt? Stuur een e-mail naar <a href="mailto:hello@vuespeed.app">hello@vuespeed.app</a>.</p>
+
+            <h2>7. Wijzigingen</h2>
+
+            <p>Als dit privacybeleid wordt aangepast, wordt de datum bovenaan bijgewerkt. Ingrijpende wijzigingen worden via de App Store-releasenotes gecommuniceerd.</p>
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="lang-en" class="lang-content">
+            <p>VueSpeed is an independent iOS app made by a single developer. This privacy policy explains honestly and clearly what data the app uses and why — without legal jargon.</p>
+
+            <h2>1. What data does VueSpeed use</h2>
+
+            <p><strong>Location (GPS)</strong><br>
+            The app uses CoreLocation to determine your speed, heading, and distance. Location data is also used to look up speed limits for your current position.</p>
+
+            <p><strong>Motion sensors</strong><br>
+            Via CoreMotion, the app detects whether you're driving (automotive activity detection) and measures G-forces while driving.</p>
+
+            <p><strong>Screen brightness</strong><br>
+            The app reads screen brightness to automatically switch to night mode.</p>
+
+            <p><strong>Audio and Bluetooth</strong><br>
+            Via AVAudioSession, the app detects whether you're connected to a car kit or other audio equipment, so the display can adapt accordingly.</p>
+
+            <p><strong>Trip history</strong><br>
+            Trips are stored locally on your device. Each trip stores: start and end time, duration, distance, speed statistics, and the route driven.</p>
+
+            <p><strong>Settings</strong><br>
+            Your preferences are stored locally. They never leave your device.</p>
+
+            <p><strong>Live Activities</strong><br>
+            The app uses ActivityKit for display in the Dynamic Island. This works entirely locally on your device.</p>
+
+            <h2>2. How your data is used</h2>
+
+            <p>All data is used exclusively to make the app function:</p>
+            <ul>
+                <li>Location and motion → speed measurement, route tracking, activity detection</li>
+                <li>GPS coordinates → speed limit lookup via OpenStreetMap, with Apple Geocoding as fallback</li>
+                <li>Screen brightness → automatic night mode</li>
+                <li>Bluetooth/audio → car kit connection detection</li>
+                <li>Trip history → displaying your trips in the app</li>
+                <li>Settings → remembering your preferences</li>
+            </ul>
+
+            <p>There is no analytics, no advertising, no tracking, and no account linking. The app does not collect data for the developer's own use.</p>
+
+            <h2>3. Data shared with third parties</h2>
+
+            <p>VueSpeed does not share data with third parties as a rule. There are two exceptions where your GPS coordinates are briefly transmitted:</p>
+
+            <p><strong>OpenStreetMap Overpass API</strong><br>
+            To look up the applicable speed limit at your location, the app sends your current coordinates to the OpenStreetMap Overpass API. This request contains no identifying information. See the <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy">OpenStreetMap privacy policy</a>.</p>
+
+            <p><strong>Apple CLGeocoder (fallback)</strong><br>
+            When the Overpass API is unavailable, the app may send a request to Apple's geocoding service to determine the location name. This falls under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.</p>
+
+            <p>There are no other third parties, no analytics services, no ad networks, and no other external SDKs in the app. The app does not require App Tracking Transparency (ATT) and does not track you across other apps or websites.</p>
+
+            <h2>4. Data storage</h2>
+
+            <p>All your trip data and settings are stored exclusively on your device. There is no developer server, no cloud storage, and no backup to an external service.</p>
+
+            <p>You can delete all stored trip data at any time from within the app. If you delete the app, all local data is permanently erased.</p>
+
+            <h2>5. Your rights</h2>
+
+            <p>Because VueSpeed does not send data to its own servers, there is no data to request or have deleted by the developer. All data is on your device and under your control.</p>
+
+            <p>You can always revoke or restrict location permission for VueSpeed via iOS Settings. Without location access, the app cannot function as a speedometer.</p>
+
+            <h2>6. Contact</h2>
+
+            <p>Questions about this privacy policy or how the app works? Send an email to <a href="mailto:hello@vuespeed.app">hello@vuespeed.app</a>.</p>
+
+            <h2>7. Changes</h2>
+
+            <p>If this privacy policy is updated, the date at the top will be changed. Significant changes will be communicated via App Store release notes.</p>
+        </div>
+
+        <footer>
+            <div>
+                <a href="/">VueSpeed</a>
+                <a href="/support">Support</a>
+            </div>
+            <p style="margin-top: 12px">&copy; 2026 MJ Consultancy</p>
+        </footer>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-switch button').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.querySelector('.lang-switch button[onclick="switchLang(\'' + lang + '\')"]').classList.add('active');
+        }
+    </script>
+</body>
+</html>

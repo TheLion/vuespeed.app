@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — VueSpeed</title>
+    <meta name="description" content="Hulp nodig met VueSpeed? Neem contact op.">
+    <link rel="canonical" href="https://vuespeed.app/support">
+    <style>
+        :root {
+            --bg: #08080f;
+            --surface: #12121a;
+            --border: #1e1e2a;
+            --blue: #3399FF;
+            --text: #e8e8ed;
+            --text-muted: #8888a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 40px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        header a {
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        header a:hover { text-decoration: underline; }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 36px 0 12px;
+        }
+
+        p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        strong { color: var(--text); }
+        a { color: var(--blue); }
+
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .contact-card .email {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .contact-card .email a {
+            text-decoration: none;
+        }
+
+        .contact-card .email a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .faq-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--blue);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/">&larr; VueSpeed</a>
+            <h1>Support</h1>
+        </header>
+
+        <div class="contact-card">
+            <p>Vragen, feedback of een probleem melden?</p>
+            <div class="email"><a href="mailto:hello@vuespeed.app">hello@vuespeed.app</a></div>
+        </div>
+
+        <h2>Veelgestelde vragen</h2>
+
+        <div class="faq-item">
+            <h3>Hoe nauwkeurig is de snelheid?</h3>
+            <p>VueSpeed gebruikt GPS voor snelheidsmeting. GPS-snelheid is doorgaans nauwkeurig tot ±2 km/u bij goed signaal. In tunnels of tussen hoge gebouwen kan de nauwkeurigheid afnemen. De app is geen vervanging van de snelheidsmeter in je auto.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Waarom klopt de snelheidslimiet niet?</h3>
+            <p>Snelheidslimieten worden opgehaald via OpenStreetMap en Apple Maps. Deze bronnen zijn niet altijd volledig of actueel. Je kunt handmatig een standaardlimiet instellen in de instellingen. Dynamische limieten (matrixborden) worden niet ondersteund.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Gebruikt de app veel batterij?</h3>
+            <p>GPS-gebruik kost batterij, vergelijkbaar met een navigatie-app. Voor langere ritten raden we aan je telefoon aan te sluiten op de autolader.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Worden mijn ritten gedeeld?</h3>
+            <p>Nee. Al je ritgegevens worden uitsluitend lokaal op je iPhone opgeslagen. Er is geen server, geen cloud en geen account. Zie ons <a href="/privacy">privacybeleid</a>.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Hoe werkt het Head-Up Display?</h3>
+            <p>De HUD-modus spiegelt het scherm horizontaal en zet de helderheid op maximum. Leg je telefoon plat op het dashboard met het scherm naar boven gericht. De snelheid wordt gereflecteerd op je voorruit.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Kan ik de app verwijderen en opnieuw installeren?</h3>
+            <p>Ja, maar al je ritgeschiedenis wordt dan permanent gewist. Er is geen cloud-backup. Je instellingen worden ook gereset.</p>
+        </div>
+
+        <footer>
+            <div>
+                <a href="/">VueSpeed</a>
+                <a href="/privacy">Privacybeleid</a>
+            </div>
+            <p style="margin-top: 12px">&copy; 2026 MJ Consultancy</p>
+        </footer>
+    </div>
+</body>
+</html>
