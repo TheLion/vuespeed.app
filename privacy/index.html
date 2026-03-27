@@ -308,7 +308,12 @@
             document.querySelectorAll('.lang-switch button').forEach(el => el.classList.remove('active'));
             document.getElementById('lang-' + lang).classList.add('active');
             document.querySelector('.lang-switch button[onclick="switchLang(\'' + lang + '\')"]').classList.add('active');
+            document.documentElement.lang = lang;
+            localStorage.setItem('vuespeed-lang', lang);
         }
+        // Restore saved language preference
+        var saved = localStorage.getItem('vuespeed-lang');
+        if (saved && saved !== 'nl') switchLang(saved);
     </script>
 </body>
 </html>

@@ -71,6 +71,33 @@
         strong { color: var(--text); }
         a { color: var(--blue); }
 
+        /* Language switcher */
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .lang-switch button {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        .lang-switch button.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
         /* Form styles */
         .form-section {
             margin-bottom: 40px;
@@ -128,6 +155,7 @@
         }
 
         input[type="email"],
+        input[type="text"],
         textarea {
             width: 100%;
             background: var(--surface);
@@ -142,12 +170,13 @@
         }
 
         input[type="email"]:focus,
+        input[type="text"]:focus,
         textarea:focus {
             outline: none;
             border-color: var(--blue);
         }
 
-        input[type="email"]::placeholder,
+        input::placeholder,
         textarea::placeholder {
             color: var(--text-muted);
             opacity: 0.5;
@@ -185,29 +214,6 @@
             font-size: 12px;
             color: var(--text-muted);
             opacity: 0.7;
-        }
-
-        /* Success/error states */
-        .form-status {
-            display: none;
-            padding: 16px 20px;
-            border-radius: 10px;
-            font-size: 14px;
-            margin-top: 8px;
-        }
-
-        .form-status.success {
-            display: block;
-            background: rgba(52, 199, 89, 0.1);
-            border: 1px solid rgba(52, 199, 89, 0.3);
-            color: var(--green);
-        }
-
-        .form-status.error {
-            display: block;
-            background: rgba(255, 59, 48, 0.1);
-            border: 1px solid rgba(255, 59, 48, 0.3);
-            color: var(--red);
         }
 
         /* FAQ */
@@ -257,90 +263,178 @@
         <header>
             <a href="/">&larr; VueSpeed</a>
             <h1>Support</h1>
+            <div class="lang-switch">
+                <button class="active" onclick="switchLang('nl')">Nederlands</button>
+                <button onclick="switchLang('en')">English</button>
+            </div>
         </header>
 
-        <section class="form-section">
-            <p>Bug gevonden, idee voor een feature, of een vraag? Laat het weten.</p>
+        <!-- DUTCH -->
+        <div id="lang-nl" class="lang-content active">
+            <section class="form-section">
+                <p>Bug gevonden, idee voor een feature, of een vraag? Laat het weten.</p>
 
-            <form id="feedback-form" action="https://submit-form.com/QO8IvvDkj" method="POST">
-                <input type="hidden" name="_redirect" value="https://vuespeed.app/support/bedankt">
-                <input type="hidden" name="_email.from" value="VueSpeed Feedback">
-                <input type="hidden" name="_email.subject" value="VueSpeed feedback">
+                <form action="https://submit-form.com/QO8IvvDkj" method="POST">
+                    <input type="hidden" name="_redirect" value="https://vuespeed.app/support/bedankt">
+                    <input type="hidden" name="_email.from" value="VueSpeed Feedback">
+                    <input type="hidden" name="_email.subject" value="VueSpeed feedback">
+                    <input type="hidden" name="lang" value="nl">
 
-                <div>
-                    <label>Type</label>
-                    <div class="type-select">
-                        <input type="radio" id="type-bug" name="type" value="Bug" required>
-                        <label for="type-bug">Bug</label>
-                        <input type="radio" id="type-feature" name="type" value="Feature">
-                        <label for="type-feature">Feature</label>
-                        <input type="radio" id="type-question" name="type" value="Vraag">
-                        <label for="type-question">Vraag</label>
+                    <div>
+                        <label>Type</label>
+                        <div class="type-select">
+                            <input type="radio" id="nl-type-bug" name="type" value="Bug" required>
+                            <label for="nl-type-bug">Bug</label>
+                            <input type="radio" id="nl-type-feature" name="type" value="Feature">
+                            <label for="nl-type-feature">Feature</label>
+                            <input type="radio" id="nl-type-question" name="type" value="Vraag">
+                            <label for="nl-type-question">Vraag</label>
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="je@email.nl" required>
-                </div>
+                    <div>
+                        <label for="nl-email">E-mail</label>
+                        <input type="email" id="nl-email" name="email" placeholder="je@email.nl" required>
+                    </div>
 
-                <div>
-                    <label for="message">Bericht</label>
-                    <textarea id="message" name="message" placeholder="Beschrijf je bug, idee of vraag..." required></textarea>
-                </div>
+                    <div>
+                        <label for="nl-message">Bericht</label>
+                        <textarea id="nl-message" name="message" placeholder="Beschrijf je bug, idee of vraag..." required></textarea>
+                    </div>
 
-                <div>
-                    <label for="device">Toestel (optioneel)</label>
-                    <input type="text" id="device" name="device" placeholder="bijv. iPhone 15, iOS 18.3" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:15px;font-family:inherit;color:var(--text);transition:border-color 0.15s ease;">
-                </div>
+                    <div>
+                        <label for="nl-device">Toestel (optioneel)</label>
+                        <input type="text" id="nl-device" name="device" placeholder="bijv. iPhone 15, iOS 18.3">
+                    </div>
 
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAACw1TFSVXJQxiTMn" data-theme="dark"></div>
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAACw1TFSVXJQxiTMn" data-theme="dark"></div>
 
-                <button type="submit">Verstuur</button>
+                    <button type="submit">Verstuur</button>
 
-                <p class="form-note">Je e-mailadres wordt alleen gebruikt om te antwoorden. We slaan geen gegevens op buiten deze melding.</p>
-            </form>
+                    <p class="form-note">Je e-mailadres wordt alleen gebruikt om te antwoorden. We slaan geen gegevens op buiten deze melding.</p>
+                </form>
+            </section>
 
-            <div id="form-success" class="form-status">Bedankt! Je bericht is verstuurd. We reageren zo snel mogelijk.</div>
-            <div id="form-error" class="form-status">Er ging iets mis. Probeer het later opnieuw of mail naar <a href="mailto:hello@vuespeed.app">hello@vuespeed.app</a>.</div>
-        </section>
+            <h2>Veelgestelde vragen</h2>
 
-        <h2>Veelgestelde vragen</h2>
+            <div class="faq-item">
+                <h3>Hoe nauwkeurig is de snelheid?</h3>
+                <p>VueSpeed gebruikt GPS voor snelheidsmeting. GPS-snelheid is doorgaans nauwkeurig tot ±2 km/u bij goed signaal. In tunnels of tussen hoge gebouwen kan de nauwkeurigheid afnemen. De app is geen vervanging van de snelheidsmeter in je auto.</p>
+            </div>
 
-        <div class="faq-item">
-            <h3>Hoe nauwkeurig is de snelheid?</h3>
-            <p>VueSpeed gebruikt GPS voor snelheidsmeting. GPS-snelheid is doorgaans nauwkeurig tot ±2 km/u bij goed signaal. In tunnels of tussen hoge gebouwen kan de nauwkeurigheid afnemen. De app is geen vervanging van de snelheidsmeter in je auto.</p>
+            <div class="faq-item">
+                <h3>Waarom klopt de snelheidslimiet niet?</h3>
+                <p>Snelheidslimieten worden opgehaald via OpenStreetMap en Apple Maps. Deze bronnen zijn niet altijd volledig of actueel. Je kunt handmatig een standaardlimiet instellen in de instellingen. Dynamische limieten (matrixborden) worden niet ondersteund.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Gebruikt de app veel batterij?</h3>
+                <p>GPS-gebruik kost batterij, vergelijkbaar met een navigatie-app. Voor langere ritten raden we aan je telefoon aan te sluiten op de autolader.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Worden mijn ritten gedeeld?</h3>
+                <p>Nee. Al je ritgegevens worden uitsluitend lokaal op je iPhone opgeslagen. Er is geen server, geen cloud en geen account. Zie ons <a href="/privacy">privacybeleid</a>.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Hoe werkt het Head-Up Display?</h3>
+                <p>De HUD-modus spiegelt het scherm horizontaal en zet de helderheid op maximum. Leg je telefoon plat op het dashboard met het scherm naar boven gericht. De snelheid wordt gereflecteerd op je voorruit.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Kan ik de app verwijderen en opnieuw installeren?</h3>
+                <p>Ja, maar al je ritgeschiedenis wordt dan permanent gewist. Er is geen cloud-backup. Je instellingen worden ook gereset.</p>
+            </div>
         </div>
 
-        <div class="faq-item">
-            <h3>Waarom klopt de snelheidslimiet niet?</h3>
-            <p>Snelheidslimieten worden opgehaald via OpenStreetMap en Apple Maps. Deze bronnen zijn niet altijd volledig of actueel. Je kunt handmatig een standaardlimiet instellen in de instellingen. Dynamische limieten (matrixborden) worden niet ondersteund.</p>
-        </div>
+        <!-- ENGLISH -->
+        <div id="lang-en" class="lang-content">
+            <section class="form-section">
+                <p>Found a bug, have a feature idea, or a question? Let us know.</p>
 
-        <div class="faq-item">
-            <h3>Gebruikt de app veel batterij?</h3>
-            <p>GPS-gebruik kost batterij, vergelijkbaar met een navigatie-app. Voor langere ritten raden we aan je telefoon aan te sluiten op de autolader.</p>
-        </div>
+                <form action="https://submit-form.com/QO8IvvDkj" method="POST">
+                    <input type="hidden" name="_redirect" value="https://vuespeed.app/support/bedankt">
+                    <input type="hidden" name="_email.from" value="VueSpeed Feedback">
+                    <input type="hidden" name="_email.subject" value="VueSpeed feedback">
+                    <input type="hidden" name="lang" value="en">
 
-        <div class="faq-item">
-            <h3>Worden mijn ritten gedeeld?</h3>
-            <p>Nee. Al je ritgegevens worden uitsluitend lokaal op je iPhone opgeslagen. Er is geen server, geen cloud en geen account. Zie ons <a href="/privacy">privacybeleid</a>.</p>
-        </div>
+                    <div>
+                        <label>Type</label>
+                        <div class="type-select">
+                            <input type="radio" id="en-type-bug" name="type" value="Bug" required>
+                            <label for="en-type-bug">Bug</label>
+                            <input type="radio" id="en-type-feature" name="type" value="Feature">
+                            <label for="en-type-feature">Feature</label>
+                            <input type="radio" id="en-type-question" name="type" value="Question">
+                            <label for="en-type-question">Question</label>
+                        </div>
+                    </div>
 
-        <div class="faq-item">
-            <h3>Hoe werkt het Head-Up Display?</h3>
-            <p>De HUD-modus spiegelt het scherm horizontaal en zet de helderheid op maximum. Leg je telefoon plat op het dashboard met het scherm naar boven gericht. De snelheid wordt gereflecteerd op je voorruit.</p>
-        </div>
+                    <div>
+                        <label for="en-email">Email</label>
+                        <input type="email" id="en-email" name="email" placeholder="you@email.com" required>
+                    </div>
 
-        <div class="faq-item">
-            <h3>Kan ik de app verwijderen en opnieuw installeren?</h3>
-            <p>Ja, maar al je ritgeschiedenis wordt dan permanent gewist. Er is geen cloud-backup. Je instellingen worden ook gereset.</p>
+                    <div>
+                        <label for="en-message">Message</label>
+                        <textarea id="en-message" name="message" placeholder="Describe your bug, idea, or question..." required></textarea>
+                    </div>
+
+                    <div>
+                        <label for="en-device">Device (optional)</label>
+                        <input type="text" id="en-device" name="device" placeholder="e.g. iPhone 15, iOS 18.3">
+                    </div>
+
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAACw1TFSVXJQxiTMn" data-theme="dark"></div>
+
+                    <button type="submit">Send</button>
+
+                    <p class="form-note">Your email is only used to reply. We don't store any data beyond this submission.</p>
+                </form>
+            </section>
+
+            <h2>Frequently asked questions</h2>
+
+            <div class="faq-item">
+                <h3>How accurate is the speed?</h3>
+                <p>VueSpeed uses GPS for speed measurement. GPS speed is typically accurate to ±2 km/h with good signal. Accuracy may decrease in tunnels or between tall buildings. The app is not a replacement for your car's speedometer.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why is the speed limit wrong?</h3>
+                <p>Speed limits are fetched from OpenStreetMap and Apple Maps. These sources are not always complete or up to date. You can manually set a default limit in settings. Dynamic limits (variable signs) are not supported.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Does the app use a lot of battery?</h3>
+                <p>GPS usage consumes battery, similar to a navigation app. For longer drives, we recommend plugging your phone into the car charger.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Are my trips shared?</h3>
+                <p>No. All trip data is stored exclusively on your iPhone. There is no server, no cloud, and no account. See our <a href="/privacy">privacy policy</a>.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How does the Head-Up Display work?</h3>
+                <p>HUD mode mirrors the screen horizontally and sets brightness to maximum. Place your phone flat on the dashboard with the screen facing up. Your speed is reflected onto the windshield.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I delete and reinstall the app?</h3>
+                <p>Yes, but all trip history will be permanently erased. There is no cloud backup. Your settings will also be reset.</p>
+            </div>
         </div>
 
         <footer>
-            <div>
+            <div id="footer-nl">
                 <a href="/">VueSpeed</a>
                 <a href="/privacy">Privacybeleid</a>
+            </div>
+            <div id="footer-en" style="display:none">
+                <a href="/">VueSpeed</a>
+                <a href="/privacy">Privacy Policy</a>
             </div>
             <p style="margin-top: 12px">&copy; 2026 MJ Consultancy</p>
         </footer>
@@ -348,15 +442,31 @@
 
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
-        // Auto-fill device info if opened from the app (via URL param)
-        const params = new URLSearchParams(window.location.search);
-        const deviceParam = params.get('device');
-        if (deviceParam) {
-            document.getElementById('device').value = deviceParam;
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-switch button').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.querySelector('.lang-switch button[onclick="switchLang(\'' + lang + '\')"]').classList.add('active');
+            document.getElementById('footer-nl').style.display = lang === 'nl' ? '' : 'none';
+            document.getElementById('footer-en').style.display = lang === 'en' ? '' : 'none';
+            document.documentElement.lang = lang;
+            localStorage.setItem('vuespeed-lang', lang);
         }
-        const typeParam = params.get('type');
+
+        // Restore saved language preference
+        var saved = localStorage.getItem('vuespeed-lang');
+        if (saved && saved !== 'nl') switchLang(saved);
+
+        // Auto-fill device info if opened from the app (via URL param)
+        var params = new URLSearchParams(window.location.search);
+        var deviceParam = params.get('device');
+        if (deviceParam) {
+            document.querySelectorAll('input[name="device"]').forEach(function(el) { el.value = deviceParam; });
+        }
+        var typeParam = params.get('type');
         if (typeParam) {
-            const radio = document.querySelector('input[name="type"][value="' + typeParam + '"]');
+            var currentLang = localStorage.getItem('vuespeed-lang') || 'nl';
+            var radio = document.getElementById(currentLang + '-type-' + typeParam.toLowerCase());
             if (radio) radio.checked = true;
         }
     </script>

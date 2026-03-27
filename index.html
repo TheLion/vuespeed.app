@@ -37,10 +37,38 @@
             padding: 0 24px;
         }
 
+        /* Language switcher */
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding-top: 24px;
+        }
+
+        .lang-switch button {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        .lang-switch button.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
         /* Hero */
         .hero {
             text-align: center;
-            padding: 80px 0 60px;
+            padding: 40px 0 60px;
         }
 
         .hero-icon {
@@ -164,7 +192,7 @@
         }
 
         @media (max-width: 600px) {
-            .hero { padding: 60px 0 40px; }
+            .hero { padding: 40px 0 40px; }
             h1 { font-size: 32px; }
             .feature-grid { grid-template-columns: 1fr; }
         }
@@ -172,69 +200,156 @@
 </head>
 <body>
     <div class="container">
-        <section class="hero">
-            <div class="hero-icon">
-                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M32 12C21 12 12 21 12 32" stroke="#3399FF" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M52 32C52 21 43 12 32 12" stroke="#3399FF" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="32" y1="32" x2="32" y2="16" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                    <circle cx="32" cy="32" r="3" fill="white"/>
-                </svg>
-            </div>
-            <h1>VueSpeed</h1>
-            <p class="subtitle">Snelheidsmeter & HUD voor onderweg</p>
-            <a class="app-store-badge" href="#">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download in de App Store">
-            </a>
-        </section>
+        <div class="lang-switch">
+            <button class="active" onclick="switchLang('nl')">Nederlands</button>
+            <button onclick="switchLang('en')">English</button>
+        </div>
 
-        <section class="features">
-            <div class="feature-grid">
-                <div class="feature">
-                    <div class="feature-icon">🚗</div>
-                    <h3>Snelheid & limiet</h3>
-                    <p>Realtime snelheid met <span class="speed-safe">kleur</span><span class="speed-warn">code</span><span class="speed-over">ring</span>. Limieten via OpenStreetMap en Apple Maps.</p>
+        <!-- DUTCH -->
+        <div id="lang-nl" class="lang-content active">
+            <section class="hero">
+                <div class="hero-icon">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 12C21 12 12 21 12 32" stroke="#3399FF" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M52 32C52 21 43 12 32 12" stroke="#3399FF" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="32" y1="32" x2="32" y2="16" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="32" cy="32" r="3" fill="white"/>
+                    </svg>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Head-Up Display</h3>
-                    <p>Spiegel het scherm op je voorruit. Leg je telefoon op het dashboard voor projectie.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🌙</div>
-                    <h3>Night Panel</h3>
-                    <p>Saab-geïnspireerd. Dimt alles behalve je snelheid. Automatisch bij zonsondergang.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📍</div>
-                    <h3>Ritregistratie</h3>
-                    <p>Automatische detectie. Afstand, duur, topsnelheid, G-kracht en route op de kaart.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🏝️</div>
-                    <h3>Dynamic Island</h3>
-                    <p>Snelheid en limiet in het Dynamic Island terwijl je andere apps gebruikt.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privé by design</h3>
-                    <p>Geen accounts, geen advertenties, geen tracking. Al je gegevens blijven op je iPhone.</p>
-                </div>
-            </div>
-        </section>
+                <h1>VueSpeed</h1>
+                <p class="subtitle">Snelheidsmeter & HUD voor onderweg</p>
+                <a class="app-store-badge" href="#">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download in de App Store">
+                </a>
+            </section>
 
-        <section class="privacy-banner">
-            <p><strong>Geen advertenties. Geen tracking. Geen accounts.</strong><br>
-            Alle gegevens blijven op je apparaat.</p>
-        </section>
+            <section class="features">
+                <div class="feature-grid">
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F697;</div>
+                        <h3>Snelheid & limiet</h3>
+                        <p>Realtime snelheid met <span class="speed-safe">kleur</span><span class="speed-warn">code</span><span class="speed-over">ring</span>. Limieten via OpenStreetMap en Apple Maps.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F504;</div>
+                        <h3>Head-Up Display</h3>
+                        <p>Spiegel het scherm op je voorruit. Leg je telefoon op het dashboard voor projectie.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F319;</div>
+                        <h3>Night Panel</h3>
+                        <p>Saab-ge&#xEF;nspireerd. Dimt alles behalve je snelheid. Automatisch bij zonsondergang.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F4CD;</div>
+                        <h3>Ritregistratie</h3>
+                        <p>Automatische detectie. Afstand, duur, topsnelheid, G-kracht en route op de kaart.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F3DD;&#xFE0F;</div>
+                        <h3>Dynamic Island</h3>
+                        <p>Snelheid en limiet in het Dynamic Island terwijl je andere apps gebruikt.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F512;</div>
+                        <h3>Priv&#xE9; by design</h3>
+                        <p>Geen accounts, geen advertenties, geen tracking. Al je gegevens blijven op je iPhone.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="privacy-banner">
+                <p><strong>Geen advertenties. Geen tracking. Geen accounts.</strong><br>
+                Alle gegevens blijven op je apparaat.</p>
+            </section>
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="lang-en" class="lang-content">
+            <section class="hero">
+                <div class="hero-icon">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 12C21 12 12 21 12 32" stroke="#3399FF" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M52 32C52 21 43 12 32 12" stroke="#3399FF" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="32" y1="32" x2="32" y2="16" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="32" cy="32" r="3" fill="white"/>
+                    </svg>
+                </div>
+                <h1>VueSpeed</h1>
+                <p class="subtitle">Speedometer & HUD for the road</p>
+                <a class="app-store-badge" href="#">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+            </section>
+
+            <section class="features">
+                <div class="feature-grid">
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F697;</div>
+                        <h3>Speed & limits</h3>
+                        <p>Real-time speed with <span class="speed-safe">color</span> <span class="speed-warn">cod</span><span class="speed-over">ing</span>. Limits via OpenStreetMap and Apple Maps.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F504;</div>
+                        <h3>Head-Up Display</h3>
+                        <p>Mirror the screen onto your windshield. Place your phone on the dashboard for projection.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F319;</div>
+                        <h3>Night Panel</h3>
+                        <p>Inspired by Saab. Dims everything except your speed. Activates automatically at sunset.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F4CD;</div>
+                        <h3>Trip recording</h3>
+                        <p>Automatic detection. Distance, duration, top speed, G-force, and your route on the map.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F3DD;&#xFE0F;</div>
+                        <h3>Dynamic Island</h3>
+                        <p>View your speed and limit in the Dynamic Island while using other apps.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">&#x1F512;</div>
+                        <h3>Private by design</h3>
+                        <p>No accounts, no ads, no tracking. All your data stays on your iPhone.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="privacy-banner">
+                <p><strong>No ads. No tracking. No accounts.</strong><br>
+                All data stays on your device.</p>
+            </section>
+        </div>
 
         <footer>
-            <div class="footer-links">
+            <div class="footer-links" id="footer-nl">
                 <a href="/privacy">Privacybeleid</a>
+                <a href="/support">Support</a>
+            </div>
+            <div class="footer-links" id="footer-en" style="display:none">
+                <a href="/privacy">Privacy Policy</a>
                 <a href="/support">Support</a>
             </div>
             <p>&copy; 2026 MJ Consultancy</p>
         </footer>
     </div>
+
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-switch button').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.querySelector('.lang-switch button[onclick="switchLang(\'' + lang + '\')"]').classList.add('active');
+            document.getElementById('footer-nl').style.display = lang === 'nl' ? '' : 'none';
+            document.getElementById('footer-en').style.display = lang === 'en' ? '' : 'none';
+            document.documentElement.lang = lang;
+            localStorage.setItem('vuespeed-lang', lang);
+        }
+        // Restore saved language preference
+        var saved = localStorage.getItem('vuespeed-lang');
+        if (saved && saved !== 'nl') switchLang(saved);
+    </script>
 </body>
 </html>

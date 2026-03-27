@@ -8,8 +8,6 @@
     <style>
         :root {
             --bg: #08080f;
-            --surface: #12121a;
-            --border: #1e1e2a;
             --blue: #3399FF;
             --text: #e8e8ed;
             --text-muted: #8888a0;
@@ -72,6 +70,9 @@
         }
 
         a:hover { text-decoration: underline; }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
     </style>
 </head>
 <body>
@@ -81,9 +82,27 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
         </div>
-        <h1>Bedankt!</h1>
-        <p>Je bericht is verstuurd. We reageren zo snel mogelijk op <strong style="color: var(--text);">hello@vuespeed.app</strong>.</p>
-        <a href="/">&larr; Terug naar VueSpeed</a>
+
+        <div id="lang-nl" class="lang-content active">
+            <h1>Bedankt!</h1>
+            <p>Je bericht is verstuurd. We reageren zo snel mogelijk op <strong style="color: var(--text);">hello@vuespeed.app</strong>.</p>
+            <a href="/">&larr; Terug naar VueSpeed</a>
+        </div>
+
+        <div id="lang-en" class="lang-content">
+            <h1>Thank you!</h1>
+            <p>Your message has been sent. We'll reply as soon as possible at <strong style="color: var(--text);">hello@vuespeed.app</strong>.</p>
+            <a href="/">&larr; Back to VueSpeed</a>
+        </div>
     </div>
+
+    <script>
+        var saved = localStorage.getItem('vuespeed-lang');
+        if (saved && saved !== 'nl') {
+            document.getElementById('lang-nl').classList.remove('active');
+            document.getElementById('lang-' + saved).classList.add('active');
+            document.documentElement.lang = saved;
+        }
+    </script>
 </body>
 </html>
