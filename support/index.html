@@ -12,8 +12,11 @@
             --surface: #12121a;
             --border: #1e1e2a;
             --blue: #3399FF;
+            --blue-hover: #4da6ff;
             --text: #e8e8ed;
             --text-muted: #8888a0;
+            --green: #34c759;
+            --red: #ff3b30;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -68,29 +71,146 @@
         strong { color: var(--text); }
         a { color: var(--blue); }
 
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-            text-align: center;
-            margin: 32px 0;
+        /* Form styles */
+        .form-section {
+            margin-bottom: 40px;
         }
 
-        .contact-card .email {
-            font-size: 20px;
+        .form-section > p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .type-select {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .type-select input[type="radio"] {
+            display: none;
+        }
+
+        .type-select label {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            margin-bottom: 0;
+        }
+
+        .type-select input[type="radio"]:checked + label {
+            border-color: var(--blue);
+            color: var(--blue);
+            background: rgba(51, 153, 255, 0.08);
+        }
+
+        .type-select label:hover {
+            border-color: var(--blue);
+        }
+
+        input[type="email"],
+        textarea {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--text);
+            line-height: 1.5;
+            transition: border-color 0.15s ease;
+        }
+
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        input[type="email"]::placeholder,
+        textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background: var(--blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 28px;
+            font-size: 15px;
             font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            align-self: flex-start;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--blue-hover);
+        }
+
+        button[type="submit"]:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        /* Success/error states */
+        .form-status {
+            display: none;
+            padding: 16px 20px;
+            border-radius: 10px;
+            font-size: 14px;
             margin-top: 8px;
         }
 
-        .contact-card .email a {
-            text-decoration: none;
+        .form-status.success {
+            display: block;
+            background: rgba(52, 199, 89, 0.1);
+            border: 1px solid rgba(52, 199, 89, 0.3);
+            color: var(--green);
         }
 
-        .contact-card .email a:hover {
-            text-decoration: underline;
+        .form-status.error {
+            display: block;
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            color: var(--red);
         }
 
+        /* FAQ */
         .faq-item {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -127,6 +247,8 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 26px; }
+            .type-select { gap: 6px; }
+            .type-select label { padding: 8px 14px; font-size: 13px; }
         }
     </style>
 </head>
@@ -137,10 +259,49 @@
             <h1>Support</h1>
         </header>
 
-        <div class="contact-card">
-            <p>Vragen, feedback of een probleem melden?</p>
-            <div class="email"><a href="mailto:hello@vuespeed.app">hello@vuespeed.app</a></div>
-        </div>
+        <section class="form-section">
+            <p>Bug gevonden, idee voor een feature, of een vraag? Laat het weten.</p>
+
+            <form id="feedback-form" action="https://submit-form.com/QO8IvvDkj" method="POST">
+                <input type="hidden" name="_redirect" value="https://vuespeed.app/support/bedankt">
+                <input type="hidden" name="_email.from" value="VueSpeed Feedback">
+                <input type="hidden" name="_email.subject" value="VueSpeed feedback">
+
+                <div>
+                    <label>Type</label>
+                    <div class="type-select">
+                        <input type="radio" id="type-bug" name="type" value="Bug" required>
+                        <label for="type-bug">Bug</label>
+                        <input type="radio" id="type-feature" name="type" value="Feature">
+                        <label for="type-feature">Feature</label>
+                        <input type="radio" id="type-question" name="type" value="Vraag">
+                        <label for="type-question">Vraag</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="je@email.nl" required>
+                </div>
+
+                <div>
+                    <label for="message">Bericht</label>
+                    <textarea id="message" name="message" placeholder="Beschrijf je bug, idee of vraag..." required></textarea>
+                </div>
+
+                <div>
+                    <label for="device">Toestel (optioneel)</label>
+                    <input type="text" id="device" name="device" placeholder="bijv. iPhone 15, iOS 18.3" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:15px;font-family:inherit;color:var(--text);transition:border-color 0.15s ease;">
+                </div>
+
+                <button type="submit">Verstuur</button>
+
+                <p class="form-note">Je e-mailadres wordt alleen gebruikt om te antwoorden. We slaan geen gegevens op buiten deze melding.</p>
+            </form>
+
+            <div id="form-success" class="form-status">Bedankt! Je bericht is verstuurd. We reageren zo snel mogelijk.</div>
+            <div id="form-error" class="form-status">Er ging iets mis. Probeer het later opnieuw of mail naar <a href="mailto:hello@vuespeed.app">hello@vuespeed.app</a>.</div>
+        </section>
 
         <h2>Veelgestelde vragen</h2>
 
@@ -182,5 +343,19 @@
             <p style="margin-top: 12px">&copy; 2026 MJ Consultancy</p>
         </footer>
     </div>
+
+    <script>
+        // Auto-fill device info if opened from the app (via URL param)
+        const params = new URLSearchParams(window.location.search);
+        const deviceParam = params.get('device');
+        if (deviceParam) {
+            document.getElementById('device').value = deviceParam;
+        }
+        const typeParam = params.get('type');
+        if (typeParam) {
+            const radio = document.querySelector('input[name="type"][value="' + typeParam + '"]');
+            if (radio) radio.checked = true;
+        }
+    </script>
 </body>
 </html>
