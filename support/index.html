@@ -294,6 +294,8 @@
                     <input type="text" id="device" name="device" placeholder="bijv. iPhone 15, iOS 18.3" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:15px;font-family:inherit;color:var(--text);transition:border-color 0.15s ease;">
                 </div>
 
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAACw1TFSVXJQxiTMn" data-theme="dark"></div>
+
                 <button type="submit">Verstuur</button>
 
                 <p class="form-note">Je e-mailadres wordt alleen gebruikt om te antwoorden. We slaan geen gegevens op buiten deze melding.</p>
@@ -344,6 +346,7 @@
         </footer>
     </div>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
         // Auto-fill device info if opened from the app (via URL param)
         const params = new URLSearchParams(window.location.search);
