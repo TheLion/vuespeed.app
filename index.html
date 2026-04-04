@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VueSpeed — Snelheidsmeter & HUD</title>
     <meta name="description" content="VueSpeed toont je snelheid, snelheidslimiet en rijgegevens in een overzichtelijk dashboard. Geen advertenties, geen tracking.">
-    <meta name="apple-itunes-app" content="app-id=APPID">
+    <meta name="apple-itunes-app" content="app-id=6761272431">
     <link rel="canonical" href="https://vuespeed.app/">
     <style>
         :root {
@@ -97,12 +97,47 @@
             margin-bottom: 32px;
         }
 
-        .app-store-badge {
-            display: none; /* Toon zodra app live is */
+        .store-badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .app-store-badge img {
+        .badge-link img {
             height: 54px;
+            display: block;
+        }
+
+        .badge-soon {
+            display: flex;
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0 20px;
+            height: 54px;
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        .badge-soon-inner {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .badge-soon-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .badge-soon-store {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
         }
 
         /* Features */
@@ -209,9 +244,17 @@
                 </div>
                 <h1>VueSpeed</h1>
                 <p class="subtitle">Snelheidsmeter & HUD voor onderweg</p>
-                <a class="app-store-badge" href="#">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download in de App Store">
-                </a>
+                <div class="store-badges">
+                    <a class="badge-link" href="https://apps.apple.com/app/id6761272431">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download in de App Store">
+                    </a>
+                    <div class="badge-soon">
+                        <div class="badge-soon-inner">
+                            <span class="badge-soon-label">Binnenkort op</span>
+                            <span class="badge-soon-store">&#9654;&nbsp; Google Play</span>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="features">
@@ -234,7 +277,7 @@
                     <div class="feature">
                         <div class="feature-icon">&#x1F4CD;</div>
                         <h3>Ritregistratie</h3>
-                        <p>Automatische detectie. Afstand, duur, topsnelheid, G-kracht en route op de kaart.</p>
+                        <p>Automatische detectie. Afstand, duur, topsnelheid en route op de kaart.</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">&#x1F3DD;&#xFE0F;</div>
@@ -263,9 +306,17 @@
                 </div>
                 <h1>VueSpeed</h1>
                 <p class="subtitle">Speedometer & HUD for the road</p>
-                <a class="app-store-badge" href="#">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-                </a>
+                <div class="store-badges">
+                    <a class="badge-link" href="https://apps.apple.com/app/id6761272431">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <div class="badge-soon">
+                        <div class="badge-soon-inner">
+                            <span class="badge-soon-label">Coming soon on</span>
+                            <span class="badge-soon-store">&#9654;&nbsp; Google Play</span>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="features">
@@ -288,7 +339,7 @@
                     <div class="feature">
                         <div class="feature-icon">&#x1F4CD;</div>
                         <h3>Trip recording</h3>
-                        <p>Automatic detection. Distance, duration, top speed, G-force, and your route on the map.</p>
+                        <p>Automatic detection. Distance, duration, top speed, and your route on the map.</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">&#x1F3DD;&#xFE0F;</div>
