@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veelgestelde vragen — VueSpeed</title>
+    <meta name="description" content="Antwoorden op veelgestelde vragen over VueSpeed: ritdetectie, snelheidslimieten, Pro-abonnement, privacy en meer.">
+    <link rel="canonical" href="https://vuespeed.app/faq">
+    <style>
+        :root {
+            --bg: #08080f;
+            --surface: #12121a;
+            --border: #1e1e2a;
+            --blue: #3399FF;
+            --text: #e8e8ed;
+            --text-muted: #8888a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 40px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        header a {
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        header a:hover { text-decoration: underline; }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .lang-switch button {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        .lang-switch button.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
+        .faq-category {
+            margin-bottom: 40px;
+        }
+
+        .faq-category h2 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+
+        details {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        details + details { }
+
+        summary {
+            padding: 18px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            gap: 12px;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px 18px;
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        .faq-answer p + p { margin-top: 10px; }
+
+        .faq-answer strong { color: var(--text); }
+
+        .faq-answer a { color: var(--blue); text-decoration: none; }
+        .faq-answer a:hover { text-decoration: underline; }
+
+        .faq-answer ul {
+            margin: 8px 0 8px 20px;
+        }
+
+        .faq-answer ul li {
+            margin-bottom: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--blue);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 26px; }
+            summary { font-size: 14px; padding: 16px; }
+            .faq-answer { padding: 0 16px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/">&larr; VueSpeed</a>
+            <h1 id="page-title">Veelgestelde vragen</h1>
+            <div class="lang-switch">
+                <button class="active" onclick="switchLang('nl')">Nederlands</button>
+                <button onclick="switchLang('en')">English</button>
+            </div>
+        </header>
+
+        <!-- DUTCH -->
+        <div id="lang-nl" class="lang-content active">
+
+            <div class="faq-category">
+                <h2>Ritten</h2>
+
+                <details>
+                    <summary>Hoe wordt een rit automatisch gestart?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed detecteert automatisch wanneer je rijdt op basis van je snelheid en beweging. Zodra je een bepaalde drempelsnelheid overschrijdt en die enige tijd aanhoudt, start de app een nieuwe rit.</p>
+                        <p>Je hoeft de app niet actief te openen om ritten op te nemen — zolang VueSpeed op de achtergrond draait en locatietoegang heeft, registreert hij je rit.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Hoe wordt een rit automatisch gestopt?</summary>
+                    <div class="faq-answer">
+                        <p>De rit stopt automatisch zodra je langere tijd stilstaat of de app bepaalt dat je niet meer rijdt. Na het stoppen wordt de rit opgeslagen in je ritgeschiedenis.</p>
+                        <p>Je kunt een rit ook altijd handmatig stoppen via de stopknop op het dashboard.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Kan ik een rit handmatig starten of stoppen?</summary>
+                    <div class="faq-answer">
+                        <p>Ja. Op het dashboard vind je een startknop waarmee je een rit handmatig kunt beginnen, ook als de automatische detectie nog niet heeft ingeschakeld. Stoppen kan eveneens handmatig via de stopknop.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Hoeveel ritten kan ik gratis opslaan?</summary>
+                    <div class="faq-answer">
+                        <p>Met de gratis versie van VueSpeed kun je maximaal <strong>25 ritten</strong> opslaan. Zodra dit limiet bereikt wordt, wordt je gevraagd om te upgraden naar VueSpeed Pro voor onbeperkte ritopslag.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Wat zie ik terug in het ritoverzicht?</summary>
+                    <div class="faq-answer">
+                        <p>Per rit zie je:</p>
+                        <ul>
+                            <li>Datum en starttijd</li>
+                            <li>Totale afstand</li>
+                            <li>Rijduur</li>
+                            <li>Gemiddelde en topsnelheid</li>
+                            <li>Routekaart met de gereden route (Pro)</li>
+                            <li>Hoogtegrafiek (Pro)</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Snelheid &amp; limieten</h2>
+
+                <details>
+                    <summary>Hoe nauwkeurig is de snelheid?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed gebruikt GPS voor snelheidsmeting. Bij goed GPS-signaal is de gemeten snelheid doorgaans nauwkeurig tot <strong>±2 km/u</strong>. In tunnels, tussen hoge gebouwen of bij slecht weer kan de nauwkeurigheid afnemen.</p>
+                        <p>De app is geen vervanging van de snelheidsmeter in je voertuig en niet bedoeld voor gebruik waarbij absolute nauwkeurigheid vereist is.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Waarom klopt de weergegeven snelheidslimiet niet?</summary>
+                    <div class="faq-answer">
+                        <p>Snelheidslimieten worden opgehaald via kaartdiensten. Deze bronnen zijn niet altijd volledig of actueel — met name op lokale wegen, woonerven of recent gewijzigde zones kan de limiet ontbreken of onjuist zijn.</p>
+                        <p>Je kunt in de instellingen een <strong>handmatige standaardlimiet</strong> instellen die wordt gebruikt wanneer er geen limiet beschikbaar is.</p>
+                        <p>Dynamische limieten (matrixborden op snelwegen) worden niet ondersteund.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Hoe werkt de snelheidswaarschuwing?</summary>
+                    <div class="faq-answer">
+                        <p>Als Pro-gebruiker kun je een drempelwaarde instellen waarboven VueSpeed je waarschuwt. Zodra je snelheid de ingestelde limiet met die drempelwaarde overschrijdt, geeft de app een visuele en/of hoorbare melding.</p>
+                        <p>Je stelt de waarschuwing in via <strong>Instellingen → Snelheidswaarschuwing</strong>.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Welke GPS-precisiemodi zijn er?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed biedt drie GPS-precisiemodi:</p>
+                        <ul>
+                            <li><strong>Laag</strong> — minder batterijverbruik, minder gedetailleerde route</li>
+                            <li><strong>Middel</strong> — goede balans tussen nauwkeurigheid en batterij (standaard)</li>
+                            <li><strong>Hoog</strong> — maximale nauwkeurigheid, hogere batterijbelasting</li>
+                        </ul>
+                        <p>Stel de modus in via <strong>Instellingen → GPS-precisie</strong>.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>VueSpeed Pro</h2>
+
+                <details>
+                    <summary>Wat zit er in VueSpeed Pro?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed Pro geeft je toegang tot:</p>
+                        <ul>
+                            <li>Snelheidslimieten in realtime</li>
+                            <li>Snelheidswaarschuwingen</li>
+                            <li>Onbeperkte ritopslag (gratis: 25 ritten)</li>
+                            <li>Gedetailleerde ritstatistieken met routekaart en hoogteprofiel</li>
+                            <li>Ritexport</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Is Pro een abonnement of een eenmalige aankoop?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed Pro is beschikbaar als <strong>eenmalige aankoop</strong> (lifetime). Je betaalt één keer en hebt permanent toegang, ook op toekomstige versies van de app.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Hoe zet ik mijn Pro-aankoop terug na herinstallatie?</summary>
+                    <div class="faq-answer">
+                        <p>Open de app na herinstallatie en tik op <strong>Aankopen herstellen</strong> onderaan het Pro-scherm. Je aankoop wordt automatisch herkend via je App Store- of Google Play-account. Je hoeft niet opnieuw te betalen.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Werkt Pro op meerdere toestellen?</summary>
+                    <div class="faq-answer">
+                        <p>Ja. Je Pro-aankoop is gekoppeld aan je Apple ID of Google-account en geldt voor alle toestellen waarop je met dat account bent ingelogd. Gebruik de hersteloptie op elk nieuw toestel.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Privacy &amp; gegevens</h2>
+
+                <details>
+                    <summary>Worden mijn ritten opgeslagen in de cloud?</summary>
+                    <div class="faq-answer">
+                        <p>Nee. Al je ritgegevens worden <strong>uitsluitend lokaal</strong> op je eigen toestel opgeslagen. Er is geen server, geen account en geen cloud-synchronisatie. Zie ook ons <a href="/privacy">privacybeleid</a>.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Wat gebeurt er met mijn data als ik de app verwijder?</summary>
+                    <div class="faq-answer">
+                        <p>Als je de app verwijdert, worden alle lokaal opgeslagen ritgegevens en instellingen <strong>permanent gewist</strong>. Er is geen cloud-backup, dus dit is niet terug te draaien. Je Pro-aankoop blijft wel bewaard in je App Store- of Google Play-account en kan worden hersteld na herinstallatie.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Deelt VueSpeed mijn locatiedata?</summary>
+                    <div class="faq-answer">
+                        <p>Nee. VueSpeed gebruikt je locatie alleen om snelheid, route en snelheidslimieten te bepalen. Locatiedata wordt niet gedeeld met derden en niet naar externe servers verstuurd.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Weergave &amp; interface</h2>
+
+                <details>
+                    <summary>Hoe werkt de HUD-modus?</summary>
+                    <div class="faq-answer">
+                        <p>In HUD-modus (Head-Up Display) wordt het scherm horizontaal gespiegeld en de helderheid op maximum gezet. Leg je telefoon plat op het dashboard met het scherm naar boven gericht. De cijfers worden via de voorruit als spiegelschrift zichtbaar, zodat je je blik op de weg kunt houden.</p>
+                        <p>Dit werkt het best bij weinig omgevingslicht of met een donkere achtergrond in de auto.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Wat is de nachtmodus?</summary>
+                    <div class="faq-answer">
+                        <p>De nachtmodus past de weergave aan voor gebruik in het donker: lager contrast en minder felle kleuren om je ogen te ontzien. Je kunt de nachtmodus handmatig inschakelen of instellen dat hij automatisch activeert op basis van het omgevingslicht.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Wat toont het dashboard precies?</summary>
+                    <div class="faq-answer">
+                        <p>Het hoofddashboard toont in één oogopslag:</p>
+                        <ul>
+                            <li>Huidige snelheid (groot, centraal)</li>
+                            <li>Snelheidslimiet op je huidige locatie</li>
+                            <li>Waarschuwingsindicator bij overschrijding</li>
+                            <li>Ritduur en afstand (tijdens actieve rit)</li>
+                            <li>Gemiddelde en topsnelheid</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Technisch</h2>
+
+                <details>
+                    <summary>Gebruikt VueSpeed veel batterij?</summary>
+                    <div class="faq-answer">
+                        <p>GPS-gebruik kost altijd batterij, vergelijkbaar met een navigatie-app. De hoeveelheid hangt af van je gekozen GPS-precisie. Bij de standaard middelste precisie valt het verbruik mee voor normale ritten.</p>
+                        <p>Voor langere ritten raden we aan je telefoon aan te sluiten op de autolader.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Werkt VueSpeed ook op Android?</summary>
+                    <div class="faq-answer">
+                        <p>Ja. VueSpeed is beschikbaar voor zowel iOS als Android. De Android-versie biedt dezelfde kernfuncties als de iOS-versie. Beide zijn te downloaden via de respectievelijke app stores.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Heb ik een internetverbinding nodig?</summary>
+                    <div class="faq-answer">
+                        <p>Voor snelheidsmeting en ritregistratie heb je <strong>geen internet</strong> nodig. Voor het ophalen van snelheidslimieten is een actieve verbinding wel vereist. Zonder internet toont de app de handmatig ingestelde standaardlimiet (indien geconfigureerd).</p>
+                    </div>
+                </details>
+            </div>
+
+            <p style="font-size:14px; color: var(--text-muted); margin-bottom: 40px;">
+                Staat jouw vraag er niet bij? <a href="/support">Neem contact op</a> — we helpen je graag.
+            </p>
+
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="lang-en" class="lang-content">
+
+            <div class="faq-category">
+                <h2>Trips</h2>
+
+                <details>
+                    <summary>How does automatic trip detection work?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed automatically detects when you're driving based on your speed and movement. Once you exceed a speed threshold and maintain it for a moment, the app starts a new trip.</p>
+                        <p>You don't need to open the app actively — as long as VueSpeed is running in the background with location access, it records your trip.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>How does a trip stop automatically?</summary>
+                    <div class="faq-answer">
+                        <p>The trip stops automatically once you remain stationary for a period of time. After stopping, the trip is saved to your trip history.</p>
+                        <p>You can also stop a trip manually using the stop button on the dashboard.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Can I start or stop a trip manually?</summary>
+                    <div class="faq-answer">
+                        <p>Yes. The dashboard has a start button to begin a trip manually, even if automatic detection hasn't triggered yet. You can also stop any trip manually using the stop button.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>How many trips can I store for free?</summary>
+                    <div class="faq-answer">
+                        <p>The free version of VueSpeed lets you store up to <strong>25 trips</strong>. Once this limit is reached, you'll be prompted to upgrade to VueSpeed Pro for unlimited trip storage.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What information is shown per trip?</summary>
+                    <div class="faq-answer">
+                        <p>Each trip shows:</p>
+                        <ul>
+                            <li>Date and start time</li>
+                            <li>Total distance</li>
+                            <li>Trip duration</li>
+                            <li>Average and top speed</li>
+                            <li>Route map with the driven path (Pro)</li>
+                            <li>Elevation profile (Pro)</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Speed &amp; limits</h2>
+
+                <details>
+                    <summary>How accurate is the speed reading?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed uses GPS for speed measurement. With good GPS signal, accuracy is typically within <strong>±2 km/h</strong>. Accuracy may decrease in tunnels, between tall buildings, or in poor weather.</p>
+                        <p>The app is not a replacement for your vehicle's speedometer and is not intended for use where absolute precision is required.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Why is the speed limit shown incorrectly?</summary>
+                    <div class="faq-answer">
+                        <p>Speed limits are fetched from map services, which are not always complete or up to date — especially on local roads, residential zones, or recently changed areas.</p>
+                        <p>You can set a <strong>manual default limit</strong> in settings that is used when no limit is available.</p>
+                        <p>Dynamic speed limits (variable road signs on motorways) are not supported.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>How does the speed alert work?</summary>
+                    <div class="faq-answer">
+                        <p>As a Pro user, you can set a threshold above which VueSpeed alerts you. When your speed exceeds the current limit by that margin, the app shows a visual and/or audible warning.</p>
+                        <p>Configure alerts in <strong>Settings → Speed alert</strong>.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What GPS precision modes are available?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed offers three GPS precision modes:</p>
+                        <ul>
+                            <li><strong>Low</strong> — lower battery usage, less detailed route</li>
+                            <li><strong>Medium</strong> — good balance between accuracy and battery (default)</li>
+                            <li><strong>High</strong> — maximum accuracy, higher battery use</li>
+                        </ul>
+                        <p>Change the mode via <strong>Settings → GPS precision</strong>.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>VueSpeed Pro</h2>
+
+                <details>
+                    <summary>What's included in VueSpeed Pro?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed Pro unlocks:</p>
+                        <ul>
+                            <li>Real-time speed limits</li>
+                            <li>Speed alerts</li>
+                            <li>Unlimited trip storage (free: 25 trips)</li>
+                            <li>Detailed trip stats with route map and elevation profile</li>
+                            <li>Trip export</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Is Pro a subscription or a one-time purchase?</summary>
+                    <div class="faq-answer">
+                        <p>VueSpeed Pro is a <strong>one-time purchase</strong> (lifetime). Pay once and keep access permanently, including future app updates.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>How do I restore Pro after reinstalling the app?</summary>
+                    <div class="faq-answer">
+                        <p>After reinstalling, open the app and tap <strong>Restore purchases</strong> at the bottom of the Pro screen. Your purchase will be automatically recognised via your App Store or Google Play account. No need to pay again.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Does Pro work on multiple devices?</summary>
+                    <div class="faq-answer">
+                        <p>Yes. Your Pro purchase is tied to your Apple ID or Google account and applies to all devices signed in with that account. Use the restore option on each new device.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Privacy &amp; data</h2>
+
+                <details>
+                    <summary>Are my trips synced to the cloud?</summary>
+                    <div class="faq-answer">
+                        <p>No. All trip data is stored <strong>exclusively on your device</strong>. There is no server, no account, and no cloud sync. See our <a href="/privacy">privacy policy</a>.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What happens to my data if I delete the app?</summary>
+                    <div class="faq-answer">
+                        <p>Deleting the app <strong>permanently erases</strong> all locally stored trips and settings. There is no cloud backup, so this cannot be undone. Your Pro purchase remains saved in your App Store or Google Play account and can be restored after reinstalling.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Does VueSpeed share my location data?</summary>
+                    <div class="faq-answer">
+                        <p>No. VueSpeed only uses your location to determine speed, route, and speed limits. Location data is never shared with third parties or sent to external servers.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Display &amp; interface</h2>
+
+                <details>
+                    <summary>How does HUD mode work?</summary>
+                    <div class="faq-answer">
+                        <p>In HUD (Head-Up Display) mode, the screen is mirrored horizontally and brightness is set to maximum. Place your phone flat on the dashboard with the screen facing up. The numbers are reflected onto your windshield so you can keep your eyes on the road.</p>
+                        <p>Works best in low ambient light or with a dark car interior.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What is night mode?</summary>
+                    <div class="faq-answer">
+                        <p>Night mode adjusts the display for use in the dark: lower contrast and softer colours to reduce eye strain. You can switch it on manually or set it to activate automatically based on ambient light.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What does the dashboard show?</summary>
+                    <div class="faq-answer">
+                        <p>The main dashboard shows at a glance:</p>
+                        <ul>
+                            <li>Current speed (large, central)</li>
+                            <li>Speed limit at your current location</li>
+                            <li>Alert indicator when exceeding the limit</li>
+                            <li>Trip duration and distance (during an active trip)</li>
+                            <li>Average and top speed</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h2>Technical</h2>
+
+                <details>
+                    <summary>Does VueSpeed use a lot of battery?</summary>
+                    <div class="faq-answer">
+                        <p>GPS always consumes battery, similar to a navigation app. The amount depends on your chosen GPS precision. At the default medium precision, usage is reasonable for typical drives.</p>
+                        <p>For longer trips, we recommend plugging your phone into the car charger.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Is VueSpeed available on Android?</summary>
+                    <div class="faq-answer">
+                        <p>Yes. VueSpeed is available for both iOS and Android. The Android version offers the same core features as the iOS version. Download from the respective app stores.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Do I need an internet connection?</summary>
+                    <div class="faq-answer">
+                        <p>Speed measurement and trip recording work <strong>without internet</strong>. An active connection is required to fetch speed limits. Without internet, the app falls back to the manually configured default limit (if set).</p>
+                    </div>
+                </details>
+            </div>
+
+            <p style="font-size:14px; color: var(--text-muted); margin-bottom: 40px;">
+                Can't find your answer? <a href="/support">Contact us</a> — we're happy to help.
+            </p>
+
+        </div>
+
+        <footer>
+            <div id="footer-nl">
+                <a href="/">VueSpeed</a>
+                <a href="/privacy">Privacybeleid</a>
+                <a href="/support">Support</a>
+            </div>
+            <div id="footer-en" style="display:none">
+                <a href="/">VueSpeed</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/support">Support</a>
+            </div>
+            <p style="margin-top: 12px">&copy; 2026 MJ Consultancy</p>
+        </footer>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-switch button').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.querySelector('.lang-switch button[onclick="switchLang(\'' + lang + '\')"]').classList.add('active');
+            document.getElementById('footer-nl').style.display = lang === 'nl' ? '' : 'none';
+            document.getElementById('footer-en').style.display = lang === 'en' ? '' : 'none';
+            document.documentElement.lang = lang;
+            localStorage.setItem('vuespeed-lang', lang);
+        }
+
+        var saved = localStorage.getItem('vuespeed-lang');
+        if (saved && saved !== 'nl') switchLang(saved);
+    </script>
+</body>
+</html>
