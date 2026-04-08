@@ -193,23 +193,48 @@
                 <details>
                     <summary>Hoe wordt een rit automatisch gestart?</summary>
                     <div class="faq-answer">
-                        <p>VueSpeed detecteert automatisch wanneer je rijdt op basis van je snelheid en beweging. Zodra je een bepaalde drempelsnelheid overschrijdt en die enige tijd aanhoudt, start de app een nieuwe rit.</p>
-                        <p>Je hoeft de app niet actief te openen om ritten op te nemen — zolang VueSpeed op de achtergrond draait en locatietoegang heeft, registreert hij je rit.</p>
+                        <p>VueSpeed gebruikt vier methoden om ritten te detecteren:</p>
+                        <ul>
+                            <li><strong>Bluetooth</strong> — Zodra je telefoon verbinding maakt met je carkit of autosysteem, start de rit direct. Dit is de snelste en meest betrouwbare methode.</li>
+                            <li><strong>Snelheid</strong> — Als je GPS-snelheid een drempelwaarde overschrijdt en aanhoudt, start de app een rit. Zonder carkit kan een rit kort starten en automatisch worden geannuleerd als blijkt dat je niet rijdt.</li>
+                            <li><strong>Beweging</strong> — Bewegingssensoren herkennen het verschil tussen autorijden, fietsen en wandelen.</li>
+                            <li><strong>Handmatig</strong> — Via de startknop op het dashboard.</li>
+                        </ul>
+                        <p>Je hoeft de app niet actief te openen — zolang VueSpeed op de achtergrond draait en locatietoegang heeft, registreert hij je rit.</p>
                     </div>
                 </details>
 
                 <details>
                     <summary>Hoe wordt een rit automatisch gestopt?</summary>
                     <div class="faq-answer">
-                        <p>De rit stopt automatisch zodra je langere tijd stilstaat of de app bepaalt dat je niet meer rijdt. Na het stoppen wordt de rit opgeslagen in je ritgeschiedenis.</p>
-                        <p>Je kunt een rit ook altijd handmatig stoppen via de stopknop op het dashboard.</p>
+                        <p>Het stoppen werkt op dezelfde manier als het starten:</p>
+                        <ul>
+                            <li><strong>Bluetooth</strong> — De rit stopt zodra de verbinding met je carkit verbroken wordt.</li>
+                            <li><strong>Beweging/Snelheid</strong> — De rit stopt als je langere tijd stilstaat of de app bepaalt dat je niet meer rijdt.</li>
+                            <li><strong>Handmatig</strong> — Via de stopknop op het dashboard.</li>
+                        </ul>
+                        <p>Na het stoppen wordt de rit automatisch opgeslagen in je ritgeschiedenis.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Wat betekenen de labels bij een rit?</summary>
+                    <div class="faq-answer">
+                        <p>Op het dashboard en in de ritdetails zie je labels die aangeven hoe de rit is gestart en gestopt:</p>
+                        <ul>
+                            <li><strong>Bluetooth</strong> — Gestart of gestopt door carkit-verbinding</li>
+                            <li><strong>Snelheid</strong> — Gestart door GPS-snelheidsdetectie</li>
+                            <li><strong>Beweging</strong> — Gestart door bewegingssensoren</li>
+                            <li><strong>Handmatig</strong> — Handmatig gestart of gestopt</li>
+                        </ul>
+                        <p>In de ritdetails staan de start- en stoptrigger bij de tijdlijn, zodat je kunt zien waardoor elke rit begon en eindigde.</p>
                     </div>
                 </details>
 
                 <details>
                     <summary>Kan ik een rit handmatig starten of stoppen?</summary>
                     <div class="faq-answer">
-                        <p>Ja. Op het dashboard vind je een startknop waarmee je een rit handmatig kunt beginnen, ook als de automatische detectie nog niet heeft ingeschakeld. Stoppen kan eveneens handmatig via de stopknop.</p>
+                        <p>Ja. Op het dashboard vind je een startknop waarmee je een rit handmatig kunt beginnen, ook als de automatische detectie nog niet heeft ingeschakeld. Stoppen kan eveneens handmatig via de stopknop. In de ritgeschiedenis wordt dit weergegeven met het label <strong>Handmatig</strong>.</p>
                     </div>
                 </details>
 
@@ -424,7 +449,13 @@
                 <details>
                     <summary>How does automatic trip detection work?</summary>
                     <div class="faq-answer">
-                        <p>VueSpeed automatically detects when you're driving based on your speed and movement. Once you exceed a speed threshold and maintain it for a moment, the app starts a new trip.</p>
+                        <p>VueSpeed uses four methods to detect trips:</p>
+                        <ul>
+                            <li><strong>Bluetooth</strong> — When your phone connects to your car's Bluetooth system, the trip starts immediately. This is the fastest and most reliable method.</li>
+                            <li><strong>Speed</strong> — If your GPS speed exceeds a threshold and holds, the app starts a trip. Without a car kit, a trip may briefly start and cancel automatically if you're not actually driving.</li>
+                            <li><strong>Motion</strong> — Motion sensors distinguish driving from cycling or walking.</li>
+                            <li><strong>Manual</strong> — Via the start button on the dashboard.</li>
+                        </ul>
                         <p>You don't need to open the app actively — as long as VueSpeed is running in the background with location access, it records your trip.</p>
                     </div>
                 </details>
@@ -432,15 +463,34 @@
                 <details>
                     <summary>How does a trip stop automatically?</summary>
                     <div class="faq-answer">
-                        <p>The trip stops automatically once you remain stationary for a period of time. After stopping, the trip is saved to your trip history.</p>
-                        <p>You can also stop a trip manually using the stop button on the dashboard.</p>
+                        <p>Stopping works the same way as starting:</p>
+                        <ul>
+                            <li><strong>Bluetooth</strong> — The trip stops when the connection to your car kit is lost.</li>
+                            <li><strong>Motion/Speed</strong> — The trip stops when you remain stationary for a period of time.</li>
+                            <li><strong>Manual</strong> — Via the stop button on the dashboard.</li>
+                        </ul>
+                        <p>After stopping, the trip is automatically saved to your trip history.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What do the trip labels mean?</summary>
+                    <div class="faq-answer">
+                        <p>On the dashboard and in trip details, you'll see labels indicating how the trip was started and stopped:</p>
+                        <ul>
+                            <li><strong>Bluetooth</strong> — Started or stopped by car kit connection</li>
+                            <li><strong>Speed</strong> — Started by GPS speed detection</li>
+                            <li><strong>Motion</strong> — Started by motion sensors</li>
+                            <li><strong>Manual</strong> — Manually started or stopped</li>
+                        </ul>
+                        <p>In trip details, the start and stop trigger are shown in the timeline, so you can see what caused each trip to begin and end.</p>
                     </div>
                 </details>
 
                 <details>
                     <summary>Can I start or stop a trip manually?</summary>
                     <div class="faq-answer">
-                        <p>Yes. The dashboard has a start button to begin a trip manually, even if automatic detection hasn't triggered yet. You can also stop any trip manually using the stop button.</p>
+                        <p>Yes. The dashboard has a start button to begin a trip manually, even if automatic detection hasn't triggered yet. You can also stop any trip manually using the stop button. In your trip history, this is shown with the <strong>Manual</strong> label.</p>
                     </div>
                 </details>
 
