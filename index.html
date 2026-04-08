@@ -135,6 +135,48 @@
             letter-spacing: 0.05em;
         }
 
+        /* Screenshots */
+        .screenshots {
+            padding: 48px 0;
+        }
+
+        .screenshot-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 0 4px;
+        }
+
+        .screenshot-row::-webkit-scrollbar { display: none; }
+
+        .screenshot-item {
+            flex-shrink: 0;
+            width: 180px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.06);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .screenshot-label {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .screenshot-item { width: 150px; }
+            .screenshot-row { justify-content: flex-start; padding: 0 16px; }
+        }
+
         /* Features */
         .features {
             padding: 40px 0 48px;
@@ -373,6 +415,21 @@
                 </div>
             </section>
 
+            <section class="screenshots">
+                <div class="screenshot-row">
+                    <div class="screenshot-item">
+                        <img src="/screenshots/dashboard-day-nl.png" alt="VueSpeed dashboard" loading="lazy">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="/screenshots/nightpanel-nl.png" alt="Night Panel modus" loading="lazy">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="/screenshots/tripdetail-nl.png" alt="Ritdetails met kaart" loading="lazy">
+                    </div>
+                </div>
+                <p class="screenshot-label">Dashboard &middot; Night Panel &middot; Ritdetails</p>
+            </section>
+
             <section class="features">
                 <div class="feature-grid">
                     <div class="feature">
@@ -505,6 +562,21 @@
                     <div class="stat-number">0</div>
                     <div class="stat-label">Tracking</div>
                 </div>
+            </section>
+
+            <section class="screenshots">
+                <div class="screenshot-row">
+                    <div class="screenshot-item">
+                        <img src="/screenshots/dashboard-day.png" alt="VueSpeed dashboard" loading="lazy">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="/screenshots/nightpanel.png" alt="Night Panel mode" loading="lazy">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="/screenshots/tripdetail.png" alt="Trip details with map" loading="lazy">
+                    </div>
+                </div>
+                <p class="screenshot-label">Dashboard &middot; Night Panel &middot; Trip details</p>
             </section>
 
             <section class="features">
