@@ -340,6 +340,10 @@
             .pro-features { gap: 20px; }
         }
     </style>
+    <script
+        src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js"
+        data-app-id="4B3D3BEC-3DE4-461F-A252-276D9A003F5C"
+    ></script>
 </head>
 <body>
     <div class="container">
@@ -698,6 +702,39 @@
             el.style.transitionDelay = (i % 2) * 0.1 + 's';
             observer.observe(el);
         });
+    </script>
+    <script type="module">
+        import TelemetryDeck from 'https://unpkg.com/@telemetrydeck/sdk@2.0.4/dist/telemetrydeck.js';
+
+        var uid = sessionStorage.getItem('td_uid');
+        if (!uid) {
+            uid = 'web-' + Math.random().toString(36).slice(2);
+            sessionStorage.setItem('td_uid', uid);
+        }
+        var td = new TelemetryDeck({ appID: '4B3D3BEC-3DE4-461F-A252-276D9A003F5C', clientUser: uid });
+
+        // Download badge click tracking
+        document.querySelectorAll('.badge-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                var platform = link.href.includes('apple.com') ? 'ios' : 'android';
+                var langEl = link.closest('[id^="lang-"]');
+                var lang = langEl ? langEl.id.replace('lang-', '') : 'unknown';
+                td.signal('downloadClicked', { platform: platform, lang: lang });
+            });
+        });
+
+        // Pro section viewed — fire once, then stop observing
+        var proSeen = false;
+        var proObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !proSeen) {
+                    proSeen = true;
+                    td.signal('proSectionViewed');
+                    proObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.pro-section').forEach(function(el) { proObserver.observe(el); });
     </script>
 </body>
 </html>

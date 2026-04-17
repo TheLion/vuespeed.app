@@ -74,6 +74,10 @@
         .lang-content { display: none; }
         .lang-content.active { display: block; }
     </style>
+    <script
+        src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js"
+        data-app-id="4B3D3BEC-3DE4-461F-A252-276D9A003F5C"
+    ></script>
 </head>
 <body>
     <div class="card">
@@ -103,6 +107,12 @@
             document.getElementById('lang-' + saved).classList.add('active');
             document.documentElement.lang = saved;
         }
+    </script>
+    <script type="module">
+        import TelemetryDeck from 'https://unpkg.com/@telemetrydeck/sdk@2.0.4/dist/telemetrydeck.js';
+        var uid = sessionStorage.getItem('td_uid') || 'web-anonymous';
+        var td = new TelemetryDeck({ appID: '4B3D3BEC-3DE4-461F-A252-276D9A003F5C', clientUser: uid });
+        td.signal('supportFormSubmitted');
     </script>
 </body>
 </html>
